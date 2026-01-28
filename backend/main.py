@@ -51,6 +51,16 @@ def health_check():
     """Health check endpoint"""
     return {"status": "healthy"}
 
+@app.post("/setup-admin")
+def setup_admin():
+    """One-time admin user setup endpoint"""
+    from seed_admin import seed_admin
+    try:
+        seed_admin()
+        return {"message": "Admin setup completed successfully"}
+    except Exception as e:
+        return {"error": str(e)}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
