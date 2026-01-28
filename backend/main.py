@@ -51,7 +51,7 @@ def health_check():
     """Health check endpoint"""
     return {"status": "healthy"}
 
-@app.post("/setup-admin")
+@app.get("/setup-admin")
 def setup_admin():
     """One-time admin user setup endpoint"""
     from seed_admin import seed_admin
