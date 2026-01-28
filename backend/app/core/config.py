@@ -37,8 +37,17 @@ class Settings(BaseSettings):
     CELERY_BROKER_URL: str = "redis://localhost:6379/0"
     CELERY_RESULT_BACKEND: str = "redis://localhost:6379/0"
     
-    # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:3001", "http://localhost:8000"]
+    # CORS - Defaults for local development, can be overridden via env
+    CORS_ORIGINS: List[str] = [
+        "http://localhost:3000",
+        "http://localhost:3001", 
+        "http://localhost:8000",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:3001",
+        "http://127.0.0.1:8000",
+        "https://educonsult-frontend-hazel.vercel.app",
+        "https://educonsult-frontend.vercel.app"
+    ]
     
     # File Upload
     MAX_FILE_SIZE: int = 52428800  # 50MB
